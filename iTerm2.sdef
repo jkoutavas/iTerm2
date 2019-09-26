@@ -308,6 +308,23 @@
       <result type="window" description="The window that was created"/>
     </command>
 
+    <command name="launch API script named" code="Itrmlasn"
+        description="Launch API script by name">
+        <cocoa class="iTermLaunchAPIScriptCommand" />
+        <direct-parameter description="The script’s name">
+            <type type="text"/>
+        </direct-parameter>
+    </command>
+
+    <command name="invoke API expression" code="Itrmiaex"
+        description="Invokes an expression, such as a registered function.">
+        <cocoa class="iTermInvokeAPIExpressionCommand" />
+        <direct-parameter description="The expression to invoke, such as a function call.">
+            <type type="text"/>
+        </direct-parameter>
+        <result type="text" description="String representation of the result, if available. Function calls’ return values are not available." />
+    </command>
+
     <command name="create window with default profile" code="Itrmnwwn"
       description="Create a new window with the default profile">
       <cocoa class="iTermNewWindowCommand" />

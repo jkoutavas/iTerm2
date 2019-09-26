@@ -6717,6 +6717,8 @@ static CGFloat iTermDimmingAmount(PSMTabBarControl *tabView) {
         return @([iTermAdvancedSettingsModel minimumTabLabelWidth]);
     } else if ([option isEqualToString:PSMTabBarControlOptionHighVisibility]) {
         return @([iTermAdvancedSettingsModel highVisibility]);
+    } else if ([option isEqualToString:PSMTabBarControlOptionColoredDrawBottomLineForHorizontalTabBar]) {
+        return @([iTermAdvancedSettingsModel drawBottomLineForHorizontalTabBar]);
     }
     return nil;
 }
@@ -7616,14 +7618,16 @@ static CGFloat iTermDimmingAmount(PSMTabBarControl *tabView) {
                           before:NO
                          profile:theBookmark
                    targetSession:targetSession
-                     synchronous:synchronous];
+                     synchronous:synchronous
+                      completion:nil];
 }
 
 - (PTYSession *)splitVertically:(BOOL)isVertical
                          before:(BOOL)before
                         profile:(Profile *)theBookmark
                   targetSession:(PTYSession *)targetSession
-                    synchronous:(BOOL)synchronous {
+                    synchronous:(BOOL)synchronous
+                     completion:(void (^)(BOOL))completion{
     if ([targetSession isTmuxClient]) {
         [self willSplitTmuxPane];
         [[targetSession tmuxController] selectPane:targetSession.tmuxPane];
@@ -7679,7 +7683,7 @@ static CGFloat iTermDimmingAmount(PSMTabBarControl *tabView) {
                                                substitutions:nil
                                             windowController:self
                                                  synchronous:synchronous
-                                                  completion:nil]) {
+                                                  completion:completion]) {
         [newSession terminate];
         [[self tabForSession:newSession] removeSession:newSession];
     }

@@ -141,6 +141,7 @@ typedef NS_ENUM(NSInteger, PTYTextViewSelectionExtensionUnit) {
 - (BOOL)textViewAmbiguousWidthCharsAreDoubleWidth;
 - (PTYScroller *)textViewVerticalScroller;
 - (BOOL)textViewHasCoprocess;
+- (void)textViewStopCoprocess;
 - (void)textViewPostTabContentsChangedNotification;
 - (void)textViewInvalidateRestorableState;
 - (void)textViewDidFindDirtyRects;
@@ -216,6 +217,7 @@ typedef NS_ENUM(NSInteger, PTYTextViewSelectionExtensionUnit) {
 - (CGFloat)textViewBadgeRightMargin;
 - (iTermVariableScope *)textViewVariablesScope;
 - (BOOL)textViewTerminalBackgroundColorDeterminesWindowDecorationColor;
+- (void)textViewDidUpdateDropTargetVisibility;
 @end
 
 @interface iTermHighlightedRow : NSObject
