@@ -1,0 +1,636 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		691E35B023370AE2007FFF84 /* iTerm2Lib.h in Headers */ = {isa = PBXBuildFile; fileRef = 691E35AE23370AE2007FFF84 /* iTerm2Lib.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		691E35B823370B85007FFF84 /* iTermLibController.h in Headers */ = {isa = PBXBuildFile; fileRef = 691E35B623370B85007FFF84 /* iTermLibController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		691E35B923370B85007FFF84 /* iTermLibController.m in Sources */ = {isa = PBXBuildFile; fileRef = 691E35B723370B85007FFF84 /* iTermLibController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		691E35BC23370C1F007FFF84 /* iTermLibSessionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 691E35BA23370C1F007FFF84 /* iTermLibSessionController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		691E35BD23370C1F007FFF84 /* iTermLibSessionController.h in Headers */ = {isa = PBXBuildFile; fileRef = 691E35BB23370C1F007FFF84 /* iTermLibSessionController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		695CD54D2339A2450020B262 /* libiTerm2Shared.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 695CD53E2339A11C0020B262 /* libiTerm2Shared.a */; };
+		695CD54E2339A2450020B262 /* libiTerm2SharedARC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 695CD5442339A11C0020B262 /* libiTerm2SharedARC.a */; };
+		695CD5582339A6F30020B262 /* CoreParse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 695CD5522339A3730020B262 /* CoreParse.framework */; };
+		695CD55A2339A70A0020B262 /* CoreParse.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 695CD5592339A70A0020B262 /* CoreParse.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		695CD55C2339B0160020B262 /* NMSSH.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 695CD55B2339B0160020B262 /* NMSSH.framework */; };
+		695CD55E2339B0290020B262 /* NMSSH.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 695CD55D2339B0290020B262 /* NMSSH.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		695CD5602339B2540020B262 /* ColorPicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 695CD55F2339B2540020B262 /* ColorPicker.framework */; };
+		695CD5622339B2690020B262 /* ColorPicker.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 695CD5612339B2680020B262 /* ColorPicker.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		695CD5652339B4F70020B262 /* libsixel.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 695CD5632339B3060020B262 /* libsixel.a */; };
+		69B7CCDA233974CC0086CADE /* SessionView+iTermLib.h in Headers */ = {isa = PBXBuildFile; fileRef = 69B7CCD8233974CB0086CADE /* SessionView+iTermLib.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		69B7CCDB233974CC0086CADE /* SessionView+iTermLib.m in Sources */ = {isa = PBXBuildFile; fileRef = 69B7CCD9233974CB0086CADE /* SessionView+iTermLib.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		69D9760E233A395B006AC9DC /* iTermLibApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 69D9760C233A395B006AC9DC /* iTermLibApplication.m */; };
+		69D9760F233A395B006AC9DC /* iTermLibApplication.h in Headers */ = {isa = PBXBuildFile; fileRef = 69D9760D233A395B006AC9DC /* iTermLibApplication.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		69D97612233A39CE006AC9DC /* NSWindow+iTermLib.m in Sources */ = {isa = PBXBuildFile; fileRef = 69D97610233A39CE006AC9DC /* NSWindow+iTermLib.m */; };
+		69D97613233A39CE006AC9DC /* NSWindow+iTermLib.h in Headers */ = {isa = PBXBuildFile; fileRef = 69D97611233A39CE006AC9DC /* NSWindow+iTermLib.h */; settings = {ATTRIBUTES = (Public, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		695CD5352339A11C0020B262 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 695CD52A2339A11C0020B262 /* iTerm2.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8742065A0564169600CFC3F1;
+			remoteInfo = iTerm2;
+		};
+		695CD5372339A11C0020B262 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 695CD52A2339A11C0020B262 /* iTerm2.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1DD39AD4180B8117004E56D5;
+			remoteInfo = iTerm2Tests;
+		};
+		695CD5392339A11C0020B262 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 695CD52A2339A11C0020B262 /* iTerm2.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1DFA7C671923E83500DF1410;
+			remoteInfo = SSKeychain;
+		};
+		695CD53B2339A11C0020B262 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 695CD52A2339A11C0020B262 /* iTerm2.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1D6EDB0A19AEA20D005A7799;
+			remoteInfo = iTerm2ForApplescriptTesting;
+		};
+		695CD53D2339A11C0020B262 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 695CD52A2339A11C0020B262 /* iTerm2.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A6C760501B45C4CF00E3C992;
+			remoteInfo = iTerm2Shared;
+		};
+		695CD53F2339A11C0020B262 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 695CD52A2339A11C0020B262 /* iTerm2.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A6C7641C1B45CB2800E3C992;
+			remoteInfo = iTerm2XCTests;
+		};
+		695CD5412339A11C0020B262 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 695CD52A2339A11C0020B262 /* iTerm2.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A6755F491D729A0500F3726C;
+			remoteInfo = image_decoder;
+		};
+		695CD5432339A11C0020B262 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 695CD52A2339A11C0020B262 /* iTerm2.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A667195C1DCE36C3000CE608;
+			remoteInfo = iTerm2SharedARC;
+		};
+		695CD5452339A13E0020B262 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 695CD52A2339A11C0020B262 /* iTerm2.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = A6C7603F1B45C4CF00E3C992;
+			remoteInfo = iTerm2Shared;
+		};
+		695CD5472339A1420020B262 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 695CD52A2339A11C0020B262 /* iTerm2.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = A66717851DCE36C3000CE608;
+			remoteInfo = iTerm2SharedARC;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		695CD5562339A4850020B262 /* Copy Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				695CD55A2339A70A0020B262 /* CoreParse.framework in Copy Frameworks */,
+				695CD55E2339B0290020B262 /* NMSSH.framework in Copy Frameworks */,
+				695CD5622339B2690020B262 /* ColorPicker.framework in Copy Frameworks */,
+			);
+			name = "Copy Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		690100C723397E7D0027251B /* libiTerm2Shared.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libiTerm2Shared.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		690100C923397E830027251B /* libiTerm2SharedARC.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libiTerm2SharedARC.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		691E35AB23370AE2007FFF84 /* iTerm2Lib.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = iTerm2Lib.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		691E35AE23370AE2007FFF84 /* iTerm2Lib.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = iTerm2Lib.h; sourceTree = "<group>"; };
+		691E35AF23370AE2007FFF84 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		691E35B623370B85007FFF84 /* iTermLibController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iTermLibController.h; sourceTree = "<group>"; };
+		691E35B723370B85007FFF84 /* iTermLibController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iTermLibController.m; sourceTree = "<group>"; };
+		691E35BA23370C1F007FFF84 /* iTermLibSessionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iTermLibSessionController.m; sourceTree = "<group>"; };
+		691E35BB23370C1F007FFF84 /* iTermLibSessionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iTermLibSessionController.h; sourceTree = "<group>"; };
+		695CD52A2339A11C0020B262 /* iTerm2.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = iTerm2.xcodeproj; path = ../iTerm2.xcodeproj; sourceTree = "<group>"; };
+		695CD5502339A2920020B262 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
+		695CD5522339A3730020B262 /* CoreParse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreParse.framework; path = ../ThirdParty/CoreParse.framework; sourceTree = "<group>"; };
+		695CD5592339A70A0020B262 /* CoreParse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreParse.framework; path = ../ThirdParty/CoreParse.framework; sourceTree = "<group>"; };
+		695CD55B2339B0160020B262 /* NMSSH.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NMSSH.framework; path = ../ThirdParty/NMSSH.framework; sourceTree = "<group>"; };
+		695CD55D2339B0290020B262 /* NMSSH.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NMSSH.framework; path = ../ThirdParty/NMSSH.framework; sourceTree = "<group>"; };
+		695CD55F2339B2540020B262 /* ColorPicker.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ColorPicker.framework; path = ../ColorPicker/ColorPicker.framework; sourceTree = "<group>"; };
+		695CD5612339B2680020B262 /* ColorPicker.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ColorPicker.framework; path = ../ColorPicker/ColorPicker.framework; sourceTree = "<group>"; };
+		695CD5632339B3060020B262 /* libsixel.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libsixel.a; path = ../ThirdParty/libsixel/lib/libsixel.a; sourceTree = "<group>"; };
+		695CD5662339B5CB0020B262 /* libncurses.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libncurses.tbd; path = usr/lib/libncurses.tbd; sourceTree = SDKROOT; };
+		69B7CCD8233974CB0086CADE /* SessionView+iTermLib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SessionView+iTermLib.h"; sourceTree = "<group>"; };
+		69B7CCD9233974CB0086CADE /* SessionView+iTermLib.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SessionView+iTermLib.m"; sourceTree = "<group>"; };
+		69B7CCDD233976DB0086CADE /* libiTerm2Shared.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libiTerm2Shared.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		69D9760C233A395B006AC9DC /* iTermLibApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iTermLibApplication.m; sourceTree = "<group>"; };
+		69D9760D233A395B006AC9DC /* iTermLibApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iTermLibApplication.h; sourceTree = "<group>"; };
+		69D97610233A39CE006AC9DC /* NSWindow+iTermLib.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSWindow+iTermLib.m"; sourceTree = "<group>"; };
+		69D97611233A39CE006AC9DC /* NSWindow+iTermLib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSWindow+iTermLib.h"; sourceTree = "<group>"; };
+		69D97615233A3D02006AC9DC /* WindowControllerInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = WindowControllerInterface.h; path = ../sources/WindowControllerInterface.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		691E35A823370AE2007FFF84 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				695CD5652339B4F70020B262 /* libsixel.a in Frameworks */,
+				695CD54D2339A2450020B262 /* libiTerm2Shared.a in Frameworks */,
+				695CD54E2339A2450020B262 /* libiTerm2SharedARC.a in Frameworks */,
+				695CD5582339A6F30020B262 /* CoreParse.framework in Frameworks */,
+				695CD55C2339B0160020B262 /* NMSSH.framework in Frameworks */,
+				695CD5602339B2540020B262 /* ColorPicker.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		691E35A123370AE2007FFF84 = {
+			isa = PBXGroup;
+			children = (
+				69D97615233A3D02006AC9DC /* WindowControllerInterface.h */,
+				695CD5612339B2680020B262 /* ColorPicker.framework */,
+				695CD55D2339B0290020B262 /* NMSSH.framework */,
+				695CD5592339A70A0020B262 /* CoreParse.framework */,
+				695CD52A2339A11C0020B262 /* iTerm2.xcodeproj */,
+				691E35AD23370AE2007FFF84 /* iTerm2Lib */,
+				691E35AC23370AE2007FFF84 /* Products */,
+				69B7CCDC233976DA0086CADE /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		691E35AC23370AE2007FFF84 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				691E35AB23370AE2007FFF84 /* iTerm2Lib.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		691E35AD23370AE2007FFF84 /* iTerm2Lib */ = {
+			isa = PBXGroup;
+			children = (
+				691E35AE23370AE2007FFF84 /* iTerm2Lib.h */,
+				69D9760D233A395B006AC9DC /* iTermLibApplication.h */,
+				69D9760C233A395B006AC9DC /* iTermLibApplication.m */,
+				691E35B623370B85007FFF84 /* iTermLibController.h */,
+				691E35B723370B85007FFF84 /* iTermLibController.m */,
+				691E35BB23370C1F007FFF84 /* iTermLibSessionController.h */,
+				691E35BA23370C1F007FFF84 /* iTermLibSessionController.m */,
+				69D97611233A39CE006AC9DC /* NSWindow+iTermLib.h */,
+				69D97610233A39CE006AC9DC /* NSWindow+iTermLib.m */,
+				69B7CCD8233974CB0086CADE /* SessionView+iTermLib.h */,
+				69B7CCD9233974CB0086CADE /* SessionView+iTermLib.m */,
+				691E35AF23370AE2007FFF84 /* Info.plist */,
+			);
+			path = iTerm2Lib;
+			sourceTree = "<group>";
+		};
+		695CD52B2339A11C0020B262 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				695CD5362339A11C0020B262 /* iTerm2.app */,
+				695CD5382339A11C0020B262 /* iTerm2Tests.app */,
+				695CD53A2339A11C0020B262 /* libSSKeychain.a */,
+				695CD53C2339A11C0020B262 /* iTerm2ForApplescriptTesting.app */,
+				695CD53E2339A11C0020B262 /* libiTerm2Shared.a */,
+				695CD5402339A11C0020B262 /* iTerm2XCTests.xctest */,
+				695CD5422339A11C0020B262 /* image_decoder */,
+				695CD5442339A11C0020B262 /* libiTerm2SharedARC.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		69B7CCDC233976DA0086CADE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				695CD5662339B5CB0020B262 /* libncurses.tbd */,
+				695CD5632339B3060020B262 /* libsixel.a */,
+				695CD55F2339B2540020B262 /* ColorPicker.framework */,
+				695CD55B2339B0160020B262 /* NMSSH.framework */,
+				695CD5522339A3730020B262 /* CoreParse.framework */,
+				695CD5502339A2920020B262 /* IOKit.framework */,
+				690100C923397E830027251B /* libiTerm2SharedARC.a */,
+				690100C723397E7D0027251B /* libiTerm2Shared.a */,
+				69B7CCDD233976DB0086CADE /* libiTerm2Shared.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		691E35A623370AE2007FFF84 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				691E35B023370AE2007FFF84 /* iTerm2Lib.h in Headers */,
+				69D9760F233A395B006AC9DC /* iTermLibApplication.h in Headers */,
+				69B7CCDA233974CC0086CADE /* SessionView+iTermLib.h in Headers */,
+				691E35BD23370C1F007FFF84 /* iTermLibSessionController.h in Headers */,
+				691E35B823370B85007FFF84 /* iTermLibController.h in Headers */,
+				69D97613233A39CE006AC9DC /* NSWindow+iTermLib.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		691E35AA23370AE2007FFF84 /* iTerm2Lib */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 691E35B323370AE2007FFF84 /* Build configuration list for PBXNativeTarget "iTerm2Lib" */;
+			buildPhases = (
+				691E35A623370AE2007FFF84 /* Headers */,
+				691E35A723370AE2007FFF84 /* Sources */,
+				691E35A823370AE2007FFF84 /* Frameworks */,
+				691E35A923370AE2007FFF84 /* Resources */,
+				695CD5562339A4850020B262 /* Copy Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				695CD5482339A1420020B262 /* PBXTargetDependency */,
+				695CD5462339A13E0020B262 /* PBXTargetDependency */,
+			);
+			name = iTerm2Lib;
+			productName = iTerm2Lib;
+			productReference = 691E35AB23370AE2007FFF84 /* iTerm2Lib.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		691E35A223370AE2007FFF84 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1030;
+				ORGANIZATIONNAME = "Heynow Software";
+				TargetAttributes = {
+					691E35AA23370AE2007FFF84 = {
+						CreatedOnToolsVersion = 10.3;
+					};
+				};
+			};
+			buildConfigurationList = 691E35A523370AE2007FFF84 /* Build configuration list for PBXProject "iTerm2Lib" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 691E35A123370AE2007FFF84;
+			productRefGroup = 691E35AC23370AE2007FFF84 /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 695CD52B2339A11C0020B262 /* Products */;
+					ProjectRef = 695CD52A2339A11C0020B262 /* iTerm2.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				691E35AA23370AE2007FFF84 /* iTerm2Lib */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		695CD5362339A11C0020B262 /* iTerm2.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = iTerm2.app;
+			remoteRef = 695CD5352339A11C0020B262 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		695CD5382339A11C0020B262 /* iTerm2Tests.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = iTerm2Tests.app;
+			remoteRef = 695CD5372339A11C0020B262 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		695CD53A2339A11C0020B262 /* libSSKeychain.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libSSKeychain.a;
+			remoteRef = 695CD5392339A11C0020B262 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		695CD53C2339A11C0020B262 /* iTerm2ForApplescriptTesting.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = iTerm2ForApplescriptTesting.app;
+			remoteRef = 695CD53B2339A11C0020B262 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		695CD53E2339A11C0020B262 /* libiTerm2Shared.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libiTerm2Shared.a;
+			remoteRef = 695CD53D2339A11C0020B262 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		695CD5402339A11C0020B262 /* iTerm2XCTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = iTerm2XCTests.xctest;
+			remoteRef = 695CD53F2339A11C0020B262 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		695CD5422339A11C0020B262 /* image_decoder */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = image_decoder;
+			remoteRef = 695CD5412339A11C0020B262 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		695CD5442339A11C0020B262 /* libiTerm2SharedARC.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libiTerm2SharedARC.a;
+			remoteRef = 695CD5432339A11C0020B262 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		691E35A923370AE2007FFF84 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		691E35A723370AE2007FFF84 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				69D9760E233A395B006AC9DC /* iTermLibApplication.m in Sources */,
+				69D97612233A39CE006AC9DC /* NSWindow+iTermLib.m in Sources */,
+				691E35BC23370C1F007FFF84 /* iTermLibSessionController.m in Sources */,
+				691E35B923370B85007FFF84 /* iTermLibController.m in Sources */,
+				69B7CCDB233974CC0086CADE /* SessionView+iTermLib.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		695CD5462339A13E0020B262 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = iTerm2Shared;
+			targetProxy = 695CD5452339A13E0020B262 /* PBXContainerItemProxy */;
+		};
+		695CD5482339A1420020B262 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = iTerm2SharedARC;
+			targetProxy = 695CD5472339A1420020B262 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		691E35B123370AE2007FFF84 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "../ThirdParty/**";
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				USER_HEADER_SEARCH_PATHS = (
+					"../sources/**",
+					"../ThirdParty/**",
+				);
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		691E35B223370AE2007FFF84 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "../ThirdParty/**";
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				USER_HEADER_SEARCH_PATHS = (
+					"../sources/**",
+					"../ThirdParty/**",
+				);
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		691E35B423370AE2007FFF84 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					../ThirdParty,
+					../ColorPicker,
+				);
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = iTerm2Lib/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = ../ThirdParty/libsixel/lib;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				OTHER_LDFLAGS = (
+					"-lc++",
+					"-lncurses",
+					"-laprutil-1",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.heynow.iTerm2Lib;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		691E35B523370AE2007FFF84 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					../ThirdParty,
+					../ColorPicker,
+				);
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = iTerm2Lib/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = ../ThirdParty/libsixel/lib;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				OTHER_LDFLAGS = (
+					"-lc++",
+					"-lncurses",
+					"-laprutil-1",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.heynow.iTerm2Lib;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		691E35A523370AE2007FFF84 /* Build configuration list for PBXProject "iTerm2Lib" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				691E35B123370AE2007FFF84 /* Debug */,
+				691E35B223370AE2007FFF84 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		691E35B323370AE2007FFF84 /* Build configuration list for PBXNativeTarget "iTerm2Lib" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				691E35B423370AE2007FFF84 /* Debug */,
+				691E35B523370AE2007FFF84 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 691E35A223370AE2007FFF84 /* Project object */;
+}
