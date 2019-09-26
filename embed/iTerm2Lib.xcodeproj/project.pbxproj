@@ -265,6 +265,7 @@
 				691E35A823370AE2007FFF84 /* Frameworks */,
 				691E35A923370AE2007FFF84 /* Resources */,
 				695CD5562339A4850020B262 /* Copy Frameworks */,
+				6970748C233C52010092998B /* Fix Framework IDs */,
 			);
 			buildRules = (
 			);
@@ -382,6 +383,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6970748C233C52010092998B /* Fix Framework IDs */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Fix Framework IDs";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "install_name_tool -change @executable_path/../Frameworks/NMSSH.framework/Versions/A/NMSSH @rpath/../Frameworks/NMSSH.framework/Versions/A/NMSSH ${TARGET_BUILD_DIR}/${TARGET_NAME}.framework/Versions/A/${TARGET_NAME}\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		691E35A723370AE2007FFF84 /* Sources */ = {
