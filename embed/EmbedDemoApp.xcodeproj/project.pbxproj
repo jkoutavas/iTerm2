@@ -16,6 +16,16 @@
 		6970749A233C59150092998B /* iTerm2Lib.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 692E72E2233A325E009EB4A2 /* iTerm2Lib.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		6903257D2340C9E7002B109B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 690325782340C9E6002B109B /* iTerm2Lib.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 691E35AB23370AE2007FFF84;
+			remoteInfo = iTerm2Lib;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXCopyFilesBuildPhase section */
 		69707493233C58550092998B /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -30,6 +40,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		690325782340C9E6002B109B /* iTerm2Lib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iTerm2Lib.xcodeproj; sourceTree = "<group>"; };
 		691E3575233708A5007FFF84 /* EmbedDemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EmbedDemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		691E3578233708A5007FFF84 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		691E3579233708A5007FFF84 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -55,9 +66,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		690325792340C9E6002B109B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6903257E2340C9E7002B109B /* iTerm2Lib.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		691E356C233708A5007FFF84 = {
 			isa = PBXGroup;
 			children = (
+				690325782340C9E6002B109B /* iTerm2Lib.xcodeproj */,
 				691E3577233708A5007FFF84 /* EmbedDemoApp */,
 				691E3576233708A5007FFF84 /* Products */,
 				692E72E1233A325E009EB4A2 /* Frameworks */,
@@ -142,12 +162,28 @@
 			mainGroup = 691E356C233708A5007FFF84;
 			productRefGroup = 691E3576233708A5007FFF84 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 690325792340C9E6002B109B /* Products */;
+					ProjectRef = 690325782340C9E6002B109B /* iTerm2Lib.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				691E3574233708A5007FFF84 /* EmbedDemoApp */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		6903257E2340C9E7002B109B /* iTerm2Lib.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = iTerm2Lib.framework;
+			remoteRef = 6903257D2340C9E7002B109B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		691E3573233708A5007FFF84 /* Resources */ = {
@@ -218,7 +254,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -277,7 +313,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -301,8 +337,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = EmbedDemoApp/EmbedDemoApp.entitlements;
-				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = EmbedDemoApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -318,8 +352,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = EmbedDemoApp/EmbedDemoApp.entitlements;
-				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = EmbedDemoApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

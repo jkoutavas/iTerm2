@@ -585,6 +585,7 @@
 				);
 				LIBRARY_SEARCH_PATHS = ../ThirdParty/libsixel/lib;
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				OTHER_CFLAGS = "-DITERM_LIB=1";
 				OTHER_LDFLAGS = (
 					"-lc++",
 					"-lncurses",
@@ -620,6 +621,7 @@
 				);
 				LIBRARY_SEARCH_PATHS = ../ThirdParty/libsixel/lib;
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				OTHER_CFLAGS = "-DITERM_LIB=1";
 				OTHER_LDFLAGS = (
 					"-lc++",
 					"-lncurses",
