@@ -17,6 +17,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		69021AA22345EADB00FDA6CA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 690325782340C9E6002B109B /* iTerm2Lib.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 691E35AA23370AE2007FFF84;
+			remoteInfo = iTerm2Lib;
+		};
 		6903257D2340C9E7002B109B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 690325782340C9E6002B109B /* iTerm2Lib.xcodeproj */;
@@ -131,6 +138,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				69021AA32345EADB00FDA6CA /* PBXTargetDependency */,
 			);
 			name = EmbedDemoApp;
 			productName = EmbedDemoApp;
@@ -209,6 +217,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		69021AA32345EADB00FDA6CA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = iTerm2Lib;
+			targetProxy = 69021AA22345EADB00FDA6CA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		691E3580233708A6007FFF84 /* Main.storyboard */ = {
