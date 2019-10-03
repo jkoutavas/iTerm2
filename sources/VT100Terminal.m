@@ -2234,16 +2234,22 @@ static const int kMaxScreenRows = 4096;
             .bottom = insetBottom,
             .right = insetRight
         };
+        const BOOL ok =
         [delegate_ terminalWillReceiveInlineFileNamed:name
-                                               ofSize:[dict[@"size"] intValue]
+                                               ofSize:[dict[@"size"] integerValue]
                                                 width:width
                                                 units:widthUnits
                                                height:height
                                                 units:heightUnits
                                   preserveAspectRatio:[dict[@"preserveAspectRatio"] boolValue]
                                                 inset:inset];
+        if (!ok) {
+            return;
+        }
     } else {
-        [delegate_ terminalWillReceiveFileNamed:name ofSize:[dict[@"size"] intValue]];
+        if (![delegate_ terminalWillReceiveFileNamed:name ofSize:[dict[@"size"] integerValue]]) {
+            return;
+        }
     }
     receivingFile_ = YES;
 }

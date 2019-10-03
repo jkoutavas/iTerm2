@@ -39,6 +39,7 @@
 #import "iTermInitialDirectory.h"
 #import "iTermKeyBindingMgr.h"
 #import "iTermKeyLabels.h"
+#import "iTermMalloc.h"
 #import "iTermObject.h"
 #import "iTermScriptConsole.h"
 #import "iTermScriptHistory.h"
@@ -4380,6 +4381,7 @@ ITERM_WEAKLY_REFERENCEABLE
         result[SESSION_ARRANGEMENT_CURSOR_GUIDE] = @(_textview.highlightCursorLine);
         result[SESSION_ARRANGEMENT_CURSOR_TYPE_OVERRIDE] = self.cursorTypeOverride;
         if (self.lastDirectory) {
+            DLog(@"Saving arrangement for %@ with lastDirectory of %@", self, self.lastDirectory);
             result[SESSION_ARRANGEMENT_LAST_DIRECTORY] = self.lastDirectory;
             result[SESSION_ARRANGEMENT_LAST_DIRECTORY_IS_UNSUITABLE_FOR_OLD_PWD] = @(self.lastDirectoryIsUnsuitableForOldPWD);
         }
@@ -6725,6 +6727,7 @@ scrollToFirstResult:(BOOL)scrollToFirstResult {
 }
 
 - (void)applyAction:(iTermAction *)action {
+    [self.textview.window makeFirstResponder:self.textview];
     [self performKeyBindingAction:action.action parameter:action.parameter event:nil];
 }
 
@@ -9230,10 +9233,11 @@ scrollToFirstResult:(BOOL)scrollToFirstResult {
     [_pbtext appendData:data];
 }
 
-- (void)screenWillReceiveFileNamed:(NSString *)filename ofSize:(int)size {
+- (void)screenWillReceiveFileNamed:(NSString *)filename ofSize:(NSInteger)size preconfirmed:(BOOL)preconfirmed {
     [self.download stop];
     [self.download endOfData];
     self.download = [[[TerminalFileDownload alloc] initWithName:filename size:size] autorelease];
+    self.download.preconfirmed = preconfirmed;
     [self.download download];
 }
 
@@ -9247,7 +9251,12 @@ scrollToFirstResult:(BOOL)scrollToFirstResult {
 }
 
 - (void)screenDidReceiveBase64FileData:(NSString *)data {
+    const NSInteger lengthBefore = self.download.length;
     [self.download appendData:data];
+    const NSInteger lengthAfter = self.download.length;
+    if (!self.download.preconfirmed) {
+        [_screen confirmBigDownloadWithBeforeSize:lengthBefore afterSize:lengthAfter];
+    }
 }
 
 - (void)screenFileReceiptEndedUnexpectedly {
@@ -10494,6 +10503,18 @@ scrollToFirstResult:(BOOL)scrollToFirstResult {
     return _delegate.realParentWindow.isFloatingHotKeyWindow;
 }
 
+- (BOOL)screenConfirmDownloadCanExceedSize:(NSInteger)limit {
+    const iTermWarningSelection selection =
+    [iTermWarning showWarningWithTitle:[NSString stringWithFormat:@"The current download is larger than %@. Continue?", [NSString it_formatBytes:limit]]
+                               actions:@[ @"OK", @"Cancel" ]
+                             accessory:nil
+                            identifier:@"NoSyncAllowBigDownload"
+                           silenceable:kiTermWarningTypePermanentlySilenceable
+                               heading:@"Allow Large File Download?"
+                                window:_view.window];
+    return selection == kiTermWarningSelection0;
+}
+
 - (VT100Screen *)popupVT100Screen {
     return _screen;
 }
@@ -11028,7 +11049,7 @@ scrollToFirstResult:(BOOL)scrollToFirstResult {
 - (NSString *)stringForLine:(screen_char_t *)screenChars
                      length:(int)length
                   cppsArray:(NSMutableArray<ITMCodePointsPerCell *> *)cppsArray {
-    unichar *characters = malloc(sizeof(unichar) * length * kMaxParts + 1);
+    unichar *characters = iTermMalloc(sizeof(unichar) * length * kMaxParts + 1);
     ITMCodePointsPerCell *cpps = [[[ITMCodePointsPerCell alloc] init] autorelease];
     cpps.numCodePoints = 1;
     cpps.repeats = 0;

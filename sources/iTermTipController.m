@@ -189,13 +189,15 @@ static NSString *const kPermissionToShowTip = @"NoSyncPermissionToShowTip";
     if (!respectUnshowable) {
         unshowableTips = @[];
     }
-    BOOL okToReturn = (prev == nil);
     for (NSString *tipKey in [[_tips allKeys] sortedArrayUsingSelector:@selector(compare:)]) {
-        if (okToReturn && ![unshowableTips containsObject:tipKey]) {
+        if ([unshowableTips containsObject:tipKey]) {
+            continue;
+        }
+        if (!prev) {
             return tipKey;
         }
-        if (!okToReturn) {
-            okToReturn = [tipKey isEqualToString:prev];
+        if ([tipKey compare:prev] == NSOrderedDescending) {
+            return tipKey;
         }
     }
     return nil;
@@ -233,6 +235,9 @@ static NSString *const kPermissionToShowTip = @"NoSyncPermissionToShowTip";
     if (!unshowableTips) {
         unshowableTips = @[];
     }
+    // Remove duplicates
+    unshowableTips = [[NSSet setWithArray:unshowableTips] allObjects];
+    // And append the last one because we use it to decide which tip to show next.
     unshowableTips = [unshowableTips arrayByAddingObject:_currentTipName];
     [[NSUserDefaults standardUserDefaults] setObject:unshowableTips forKey:kUnshowableTipsKey];
 }

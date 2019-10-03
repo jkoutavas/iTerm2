@@ -41,6 +41,7 @@
 #import "iTermWarning.h"
 #import "MovePaneController.h"
 #import "MovingAverage.h"
+#import "NSAppearance+iTerm.h"
 #import "NSArray+iTerm.h"
 #import "NSCharacterSet+iTerm.h"
 #import "NSColor+iTerm.h"
@@ -611,7 +612,22 @@ static const int kDragThreshold = 3;
     PTYScroller *scroller = [_delegate textViewVerticalScroller];
     NSColor *backgroundColor = [_colorMap colorForKey:kColorMapBackground];
     const BOOL isDark = [backgroundColor isDark];
-    scroller.knobStyle = isDark ? NSScrollerKnobStyleLight : NSScrollerKnobStyleDefault;
+
+    if (isDark) {
+        // Dark background, any theme, any OS version
+        scroller.knobStyle = NSScrollerKnobStyleLight;
+    } else if (@available(macOS 10.14, *)) {
+        if (self.effectiveAppearance.it_isDark) {
+            // Light background, dark theme — issue 8322
+            scroller.knobStyle = NSScrollerKnobStyleDark;
+        } else {
+            // Light background, light theme
+            scroller.knobStyle = NSScrollerKnobStyleDefault;
+        }
+    } else {
+        // Pre-10.4, light background
+        scroller.knobStyle = NSScrollerKnobStyleDefault;
+    }
 
     // The knob style is used only for overlay scrollers. In the minimal theme, the window decorations'
     // colors are based on the terminal background color. That means the appearance must be changed to get
@@ -1690,18 +1706,30 @@ static const int kDragThreshold = 3;
         return NO;
     }
     if (_numTouches == 3) {
+        // NOTE! If you turn on the following setting:
+        //   System Preferences > Accessibility > Mouse & Trackpad > Trackpad Options... > Enable dragging > three finger drag
+        // Then a three-finger drag gets translated into mouseDown:…mouseDragged:…mouseUp:.
+        // Prior to commit 96323ddf8 we didn't track touch-up/touch-down unless necessary, so that
+        // feature worked unless you had a mouse gesture that caused touch tracking to be enabled.
+        // In issue 8321 it was revealed that touch tracking breaks three-finger drag. The solution
+        // is to not return early if we detect a three-finger down but don't have a pointer action
+        // for it. Then it proceeds to behave like before commit 96323ddf8. Otherwise, it'll just
+        // watch for the actions that three-finger touches can cause.
+        BOOL shouldReturnEarly = YES;
         if ([iTermPreferences boolForKey:kPreferenceKeyThreeFingerEmulatesMiddle]) {
             [self emulateThirdButtonPressDown:YES withEvent:event];
         } else {
             // Perform user-defined gesture action, if any
-            [pointer_ mouseDown:event
-                    withTouches:_numTouches
-                   ignoreOption:[self terminalWantsMouseReports]];
+            shouldReturnEarly = [pointer_ mouseDown:event
+                                        withTouches:_numTouches
+                                       ignoreOption:[self terminalWantsMouseReports]];
             DLog(@"Set mouseDown=YES because of 3 finger mouseDown (not emulating middle)");
             _mouseDown = YES;
         }
         DLog(@"Returning because of 3-finger click.");
-        return NO;
+        if (shouldReturnEarly) {
+            return NO;
+        }
     }
     if ([pointer_ eventEmulatesRightClick:event]) {
         [pointer_ mouseDown:event
@@ -5848,7 +5876,7 @@ scrollToFirstResult:(BOOL)scrollToFirstResult {
         lines = [_dataSource linesInRange:NSMakeRange(lineStart, lineEnd - lineStart)];
     }
     const NSInteger numLines = lines.count;
-
+    DLog(@"Visible lines are [%d,%d)", lineStart, lineEnd);
     for (int y = lineStart, i = 0; y < lineEnd; y++, i++) {
         if (_blinkAllowed && i < numLines) {
             // First, mark blinking chars as dirty.
@@ -5864,7 +5892,9 @@ scrollToFirstResult:(BOOL)scrollToFirstResult {
                     if (gDebugLogging) {
                         DLog(@"Found blinking char on line %d", y);
                     }
-                    [self setNeedsDisplayInRect:[self rectWithHalo:dirtyRect]];
+                    const NSRect rect = [self rectWithHalo:dirtyRect];
+                    DLog(@"Redraw rect for line y=%d i=%d blink: %@", y, i, NSStringFromRect(rect));
+                    [self setNeedsDisplayInRect:rect];
                     break;
                 }
             }
