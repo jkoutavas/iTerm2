@@ -7,7 +7,10 @@
 //
 
 #import "PreferenceInfo.h"
+
+#ifndef ITERM_LIB
 #import "PreferencePanel.h"
+#endif
 
 @implementation PreferenceInfo
 
@@ -26,12 +29,14 @@
     self = [super init];
     if (self) {
         _range = NSMakeRange(0, INT_MAX);
+#ifndef ITERM_LIB
         // Observers' initial execution happens from the notification because it gives the current
         // profile a chance to get set before the observer runs.
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(preferencePanelDidLoad:)
                                                      name:kPreferencePanelDidLoadNotification
                                                    object:nil];
+#endif
     }
     return self;
 }

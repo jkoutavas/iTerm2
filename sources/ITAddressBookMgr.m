@@ -29,19 +29,22 @@
 
 #import "DebugLogging.h"
 #import "iTermDynamicProfileManager.h"
-#import "iTermHotKeyController.h"
-#import "iTermKeyBindingMgr.h"
-#import "iTermHotKeyMigrationHelper.h"
-#import "iTermHotKeyProfileBindingController.h"
-#import "iTermMigrationHelper.h"
 #import "iTermPreferences.h"
 #import "iTermProfilePreferences.h"
-#import "PreferencePanel.h"
 #import "ProfileModel.h"
 #import "NSColor+iTerm.h"
 #import "NSDictionary+iTerm.h"
 #import "NSFont+iTerm.h"
+#import "NSStringITerm.h"
 #include <arpa/inet.h>
+
+#ifndef ITERM_LIB
+#import "iTermKeyBindingMgr.h"
+#import "iTermHotKeyMigrationHelper.h"
+#import "iTermHotKeyProfileBindingController.h"
+#import "iTermMigrationHelper.h"
+#import "PreferencePanel.h"
+#endif
 
 NSString *const iTermUnicodeVersionDidChangeNotification = @"iTermUnicodeVersionDidChangeNotification";
 
@@ -138,6 +141,7 @@ iTermWindowType iTermThemedWindowType(iTermWindowType windowType) {
     if (self) {
         NSUserDefaults* prefs = [NSUserDefaults standardUserDefaults];
         _dynamicProfileManager = [iTermDynamicProfileManager sharedInstance];
+#ifndef ITERM_LIB
         if ([prefs objectForKey:KEY_DEPRECATED_BOOKMARKS] &&
             [[prefs objectForKey:KEY_DEPRECATED_BOOKMARKS] isKindOfClass:[NSDictionary class]] &&
             ![prefs objectForKey:KEY_NEW_BOOKMARKS]) {
@@ -148,7 +152,7 @@ iTermWindowType iTermThemedWindowType(iTermWindowType windowType) {
             [prefs setObject:[[ProfileModel sharedInstance] rawData] forKey:KEY_NEW_BOOKMARKS];
             [[ProfileModel sharedInstance] removeAllBookmarks];
         }
-
+#endif
         // Load new-style bookmarks.
         id newBookmarks = [prefs objectForKey:KEY_NEW_BOOKMARKS];
         NSString *originalDefaultGuid = [[prefs objectForKey:KEY_DEFAULT_GUID] copy];
@@ -207,9 +211,10 @@ iTermWindowType iTermThemedWindowType(iTermWindowType windowType) {
             // One of the dynamic profiles has the default guid.
             [[ProfileModel sharedInstance] setDefaultByGuid:originalDefaultGuid];
         }
-
+#ifndef ITERM_LIB
         [[iTermHotKeyMigrationHelper sharedInstance] migrateSingleHotkeyToMulti];
         [[iTermHotKeyProfileBindingController sharedInstance] refresh];
+#endif
     }
 
     return self;
@@ -661,13 +666,16 @@ iTermWindowType iTermThemedWindowType(iTermWindowType windowType) {
     [model removeProfileWithGuid:guid];
 
     // Ensure all profile list views reload their data to avoid issue 4033.
+#ifndef ITERM_LIB
     DLog(@"Posting profile was deleted notification");
     [self postNotificationName:kProfileWasDeletedNotification object:nil userInfo:nil];
+#endif
     [model flush];
     return YES;
 }
 
 + (void)removeKeyMappingsReferringToGuid:(NSString *)badRef {
+#ifndef ITERM_LIB
     for (NSString* guid in [[ProfileModel sharedInstance] guids]) {
         Profile *profile = [[ProfileModel sharedInstance] bookmarkWithGuid:guid];
         profile = [iTermKeyBindingMgr removeMappingsReferencingGuid:badRef fromBookmark:profile];
@@ -684,6 +692,7 @@ iTermWindowType iTermThemedWindowType(iTermWindowType windowType) {
     }
     [iTermKeyBindingMgr removeMappingsReferencingGuid:badRef fromBookmark:nil];
     [self postNotificationName:kKeyBindingsChangedNotification object:nil userInfo:nil];
+#endif
 }
 
 + (void)postNotificationName:(NSString *)name object:(id)object userInfo:(id)userInfo {

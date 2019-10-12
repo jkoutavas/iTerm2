@@ -29,7 +29,10 @@
 #import "iTermProfileSearchToken.h"
 #import "NSStringITerm.h"
 #import "NSThread+iTerm.h"
+
+#ifndef ITERM_LIB
 #import "PreferencePanel.h"
+#endif
 
 NSString *const kReloadAddressBookNotification = @"iTermReloadAddressBook";
 NSString *const kReloadAllProfiles = @"kReloadAllProfiles";
@@ -312,6 +315,7 @@ int gMigrated;
 
 + (void)migratePromptOnCloseInMutableBookmark:(NSMutableDictionary *)dict
 {
+#ifndef ITERM_LIB
     // Migrate global "prompt on close" to per-profile prompt enum
     if ([dict objectForKey:KEY_PROMPT_CLOSE_DEPRECATED]) {
         // The 8/28 build incorrectly ignored the OnlyWhenMoreTabs setting
@@ -352,6 +356,7 @@ int gMigrated;
                  forKey:KEY_JOBS];
         gMigrated = YES;
     }
+#endif
 }
 
 - (void)addBookmark:(Profile*)bookmark inSortedOrder:(BOOL)sort

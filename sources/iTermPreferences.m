@@ -12,12 +12,15 @@
 // Optionally, it may have a function that computes its value (set in +computedObjectDictionary)
 // and the view controller may customize how its control's appearance changes dynamically.
 
-#import "iTermNotificationCenter.h"
 #import "iTermPreferences.h"
-#import "iTermRemotePreferences.h"
 #import "iTermUserDefaultsObserver.h"
-#import "WindowArrangements.h"
+
+#ifndef ITERM_LIB
+#import "iTermNotificationCenter.h"
+#import "iTermRemotePreferences.h"
 #import "PSMTabBarControl.h"
+#import "WindowArrangements.h"
+#endif
 
 #define BLOCK(x) [^id() { return [self x]; } copy]
 
@@ -250,9 +253,10 @@ static NSString *sPreviousVersion;
     // See issue 3244 for details.
     [[NSUserDefaults standardUserDefaults] setBool:NO
                                             forKey:@"NSScrollViewShouldScrollUnderTitlebar"];
-
+#ifndef ITERM_LIB
     // Load prefs from remote.
     [[iTermRemotePreferences sharedInstance] copyRemotePrefsToLocalUserDefaults];
+#endif
 }
 
 #pragma mark - Default values
@@ -297,8 +301,9 @@ static NSString *sPreviousVersion;
 
                   kPreferenceKeyTabStyle_Deprecated: @(TAB_STYLE_LIGHT),
                   kPreferenceKeyTabStyle: @(TAB_STYLE_LIGHT),
-                  
+#ifndef ITERM_LIB
                   kPreferenceKeyTabPosition: @(TAB_POSITION_TOP),
+#endif
                   kPreferenceKeyStatusBarPosition: @(iTermStatusBarPositionTop),
                   kPreferenceKeyHideTabBar: @YES,
                   kPreferenceKeyHideTabNumber: @NO,
@@ -492,8 +497,9 @@ static NSString *sPreviousVersion;
     for (void (^block)(id, id) in observers) {
         block(before, object);
     }
-
+#ifndef ITERM_LIB
     [[iTermPreferenceDidChangeNotification notificationWithKey:key value:object] post];
+#endif
 }
 
 #pragma mark - APIs
@@ -595,11 +601,15 @@ static NSString *sPreviousVersion;
 #pragma mark - Value Computation Methods
 
 + (NSNumber *)computedOpenArrangementAtStartup {
+#ifndef ITERM_LIB
     if ([WindowArrangements count] == 0) {
         return @NO;
     } else {
         return nil;
     }
+#else
+    return @NO;
+#endif
 }
 
 // Text fields don't like nil strings.

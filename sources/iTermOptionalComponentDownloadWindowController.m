@@ -11,7 +11,9 @@
 #import "NSObject+iTerm.h"
 #import "NSStringITerm.h"
 
+#ifndef ITERM_LIB
 @import Sparkle;
+#endif
 
 // SEE ALSO iTermWebSocketConnectionMinimumPythonLibraryVersion
 // NOTE: This does not affect full-environment scripts.
@@ -151,6 +153,9 @@ didCompleteWithError:(nullable NSError *)error {
         // Assume it's the top of master because there's no ordering on git commit numbers
         return YES;
     }
+    
+// iTermLib TODO
+#ifndef ITERM_LIB
     id<SUVersionComparison> comparator = [SUStandardVersionComparator defaultComparator];
     NSComparisonResult result;
     if (minVersion) {
@@ -166,6 +171,7 @@ didCompleteWithError:(nullable NSError *)error {
             return NO;
         }
     }
+#endif
 
     return YES;
 }

@@ -17,7 +17,11 @@
 #import "NSColor+iTerm.h"
 #import "NSDictionary+iTerm.h"
 #import "NSJSONSerialization+iTerm.h"
+
+#ifndef ITERM_LIB
+#import "iTermStatusBarLayout.h"
 #import "PreferencePanel.h"
+#endif
 
 #define PROFILE_BLOCK(x) [^id(Profile *profile) { return [self x:profile]; } copy]
 
@@ -403,7 +407,9 @@ NSString *const kProfilePreferenceInitialDirectoryAdvancedValue = @"Advanced";
                   KEY_VISUAL_BELL: @NO,
                   KEY_SET_LOCALE_VARS: @YES,
                   KEY_SESSION_END_ACTION: @(iTermSessionEndActionDefault),
+#ifndef ITERM_LIB
                   KEY_PROMPT_CLOSE: @(PROMPT_NEVER),
+#endif
                   KEY_UNDO_TIMEOUT: @(5),
                   KEY_JOBS: @[],
                   KEY_REDUCE_FLICKER: @NO,
@@ -534,14 +540,16 @@ NSString *const kProfilePreferenceInitialDirectoryAdvancedValue = @"Advanced";
                   KEY_UNICODE_VERSION: PROFILE_BLOCK(unicodeVersion),
                   KEY_TITLE_COMPONENTS: PROFILE_BLOCK(titleComponents),
                   KEY_BACKGROUND_IMAGE_MODE: PROFILE_BLOCK(backgroundImageMode),
+#ifndef ITERM_LIB
                   KEY_STATUS_BAR_LAYOUT: PROFILE_BLOCK(statusBarLayout),
+                  KEY_WINDOW_TYPE: PROFILE_BLOCK(windowType),
+#endif
                   KEY_BADGE_TOP_MARGIN: PROFILE_BLOCK(badgeTopMargin),
                   KEY_BADGE_RIGHT_MARGIN: PROFILE_BLOCK(badgeRightMargin),
                   KEY_BADGE_MAX_WIDTH: PROFILE_BLOCK(badgeMaxWidth),
                   KEY_BADGE_MAX_HEIGHT: PROFILE_BLOCK(badgeMaxHeight),
                   KEY_BADGE_FONT: PROFILE_BLOCK(badgeFont),
-                  KEY_WINDOW_TYPE: PROFILE_BLOCK(windowType)
-                };
+                 };
     }
     return dict;
 }
@@ -632,6 +640,7 @@ NSString *const kProfilePreferenceInitialDirectoryAdvancedValue = @"Advanced";
     return @(iTermBackgroundImageModeStretch);
 }
 
+#ifndef ITERM_LIB
 + (id)statusBarLayout:(Profile *)profile {
     if (profile[KEY_STATUS_BAR_LAYOUT]) {
         return profile[KEY_STATUS_BAR_LAYOUT];
@@ -645,6 +654,7 @@ NSString *const kProfilePreferenceInitialDirectoryAdvancedValue = @"Advanced";
     });
     return defaultValue;
 }
+#endif
 
 + (id)badgeTopMargin:(Profile *)profile {
     id value = profile[KEY_BADGE_TOP_MARGIN];
@@ -678,6 +688,7 @@ NSString *const kProfilePreferenceInitialDirectoryAdvancedValue = @"Advanced";
     return @([iTermAdvancedSettingsModel badgeMaxHeightFraction]);
 }
 
+#ifndef ITERM_LIB
 + (id)windowType:(Profile *)profile {
     NSNumber *number = profile[KEY_WINDOW_TYPE];
     if (!number) {
@@ -685,6 +696,7 @@ NSString *const kProfilePreferenceInitialDirectoryAdvancedValue = @"Advanced";
     }
     return @(iTermThemedWindowType(number.intValue));
 }
+#endif
 
 + (id)badgeFont:(Profile *)profile {
     id value = profile[KEY_BADGE_FONT];

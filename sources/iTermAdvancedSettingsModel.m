@@ -10,7 +10,9 @@
 
 #import "iTermAdvancedSettingsModel.h"
 #import "iTermUserDefaultsObserver.h"
+#ifndef ITERM_LIB
 #import "NSApplication+iTerm.h"
+#endif
 #import "NSStringITerm.h"
 #import <objc/runtime.h>
 
@@ -560,9 +562,11 @@ DEFINE_BOOL(laxNilPolicyInInterpolatedStrings, YES, SECTION_SCRIPTING @"Should r
                 }];
             }
         }];
+#ifndef ITERM_LIB
         if ([NSApp isRunningUnitTests]) {
             sAdvancedSetting_runJobsInServers = @NO;
         }
+#endif
     }
 }
 

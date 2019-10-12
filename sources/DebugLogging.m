@@ -8,7 +8,9 @@
 
 #import "DebugLogging.h"
 #import "iTermAdvancedSettingsModel.h"
+#ifndef ITERM_LIB
 #import "iTermApplication.h"
+#endif
 #import "NSFileManager+iTerm.h"
 #import "NSView+RecursiveDescription.h"
 #import <Cocoa/Cocoa.h>
@@ -49,23 +51,28 @@ static void WriteDebugLogHeader() {
     NSString *header = [NSString stringWithFormat:
                         @"iTerm2 version: %@\n"
                         @"Date: %@ (%lld)\n"
+#ifndef ITERM_LIB
                         @"Key window: %@\n"
                         @"Windows: %@\n"
                         @"Ordered windows: %@\n"
+#endif
                         @"Pinned messages: %@\n"
                         @"------ END HEADER ------\n\n",
                         [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"],
                         [NSDate date],
                         (long long)[[NSDate date] timeIntervalSince1970],
+#ifndef ITERM_LIB
                         [[NSApplication sharedApplication] keyWindow],
                         windows,
                         [(iTermApplication *)NSApp orderedWindowsPlusAllHotkeyPanels],
+#endif
                         pinnedMessages];
     [gDebugLogHeader release];
     gDebugLogHeader = [header copy];
 }
 
 static void WriteDebugLogFooter() {
+#ifndef ITERM_LIB
   NSMutableString *windows = [NSMutableString string];
   for (NSWindow *window in [[NSApplication sharedApplication] windows]) {
       AppendWindowDescription(window, windows);
@@ -77,6 +84,7 @@ static void WriteDebugLogFooter() {
                       windows,
                       [(iTermApplication *)NSApp orderedWindowsPlusAllHotkeyPanels]];
   [gDebugLogStr appendString:footer];
+#endif
 }
 
 static void FlushDebugLog() {
